@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Practica1</string>
     <string name="newQuotation">Get a new quotation</string>
+    <string name="about">About</string>
+    <string name="favourites">Favourites</string>
+    <string name="settings">Settings</string>
 </resources>

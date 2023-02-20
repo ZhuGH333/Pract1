@@ -1,4 +1,4 @@
-package UI
+package dadm.zyang.practica1.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
