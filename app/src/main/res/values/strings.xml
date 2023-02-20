@@ -4,4 +4,7 @@
     <string name="about">About</string>
     <string name="favourites">Favourites</string>
     <string name="settings">Settings</string>
+    <string name="newQuotationItem">Quotations</string>
+    <string name="favouritesItem">Favourites</string>
+    <string name="settingsItem">Settings</string>
 </resources>

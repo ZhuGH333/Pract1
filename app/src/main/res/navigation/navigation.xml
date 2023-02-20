@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/newQuotationFragment">
+
+    <fragment
+        android:id="@+id/newQuotationFragment"
+        android:name="dadm.zyang.practica1.ui.newquotation.NewQuotationFragment"
+        android:label="@string/newQuotation" />
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="dadm.zyang.practica1.ui.favourites.FavouritesFragment"
+        android:label="@string/favourites" />
+    <dialog
+        android:id="@+id/aboutDialogFragment"
+        android:name="dadm.zyang.practica1.ui.about.AboutDialogFragment"
+        android:label="@string/about" />
+    <fragment
+        android:id="@+id/settingsFragments"
+        android:name="dadm.zyang.practica1.ui.settings.SettingsFragments"
+        android:label="@string/settings" />
+</navigation>

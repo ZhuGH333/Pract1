@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/newQuotationFragment"
+        android:title="@string/newQuotationItem"
+        android:icon="@drawable/baseline_add_comment_24"
+        />
+
+    <item
+        android:id="@+id/favouritesFragment"
+        android:title="@string/favouritesItem"
+        android:icon="@drawable/baseline_star_border_24"
+        />
+    <item
+        android:id="@+id/settingsFragments"
+        android:title="@string/settingsItem"
+        android:icon="@drawable/baseline_settings_24"
+        />
+
+</menu>
