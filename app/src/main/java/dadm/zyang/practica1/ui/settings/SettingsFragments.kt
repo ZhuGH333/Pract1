@@ -5,16 +5,15 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import dadm.zyang.practica1.R
 import dadm.zyang.practica1.databinding.FragmentNewQuotationBinding
+import dadm.zyang.practica1.databinding.FragmentSettingsBinding
 
 class SettingsFragments: Fragment(R.layout.fragment_settings) {
-    private var _binding: FragmentNewQuotationBinding? = null;
+    private var _binding: FragmentSettingsBinding? = null;
     private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentNewQuotationBinding.bind(view)
-    }
-
+        _binding = FragmentSettingsBinding.bi
     override fun onDestroyView() {
         _binding =  null
         super.onDestroyView()
