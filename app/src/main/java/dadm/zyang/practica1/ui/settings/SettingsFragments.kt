@@ -13,7 +13,9 @@ class SettingsFragments: Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentSettingsBinding.bi
+        _binding = FragmentSettingsBinding.bind(view)
+    }
+
     override fun onDestroyView() {
         _binding =  null
         super.onDestroyView()
