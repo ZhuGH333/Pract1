@@ -7,4 +7,6 @@
     <string name="newQuotationItem">Quotations</string>
     <string name="favouritesItem">Favourites</string>
     <string name="settingsItem">Settings</string>
+    <string name="aboutText">PracticaDadm by \n\nZhuping Yang\n\nzyang@inf.upv.es\n\nDeveloped for DADM 2023</string>
+    <string name="descripcionBirds">Descripcion de la foto</string>
 </resources>
