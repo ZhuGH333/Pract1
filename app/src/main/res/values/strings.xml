@@ -11,4 +11,5 @@
     <string name="descripcionBirds">Descripcion de la foto</string>
     <string name="descriptonFloatButton">Boton flotante para añadir una cita</string>
     <string name="msgBienvenida"> “Hello %1s!,\n\nRefresh to get a new quotation\n\n(swipe down or options menu)</string>
+    <string name="refreshTitle">Refresh</string>
 </resources>
