@@ -46,9 +46,19 @@ class NewQuotationFragment: Fragment(R.layout.fragment_new_quotation), MenuProvi
             getNewQuotation()
         }
 
+        viewModel.showingButton.observe(viewLifecycleOwner) {
+            binding.fab.visibility =  if (it) View.VISIBLE else View.INVISIBLE
+        }
+
+        binding.fab.setOnClickListener {
+            viewModel.addToFavourites()
+        }
+
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
     }
+
+
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.menu_new_quotation, menu)

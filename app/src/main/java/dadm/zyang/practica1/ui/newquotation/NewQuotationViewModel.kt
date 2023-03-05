@@ -19,10 +19,22 @@ class NewQuotationViewModel: ViewModel(){
 
     val isGreetingsVisible = Transformations.map(cita) { it == null }
 
+    private val _showingButton = MutableLiveData<Boolean>()
+    val showingButton : LiveData<Boolean> = _showingButton
+    init {
+        _showingButton.value = false
+    }
+
+
     fun getNewQuotation(){
         _isRefreshing.value = true
         val num = (0..99).random().toString()
         _cita.value = Quotation(num, "Quotation text #$num", "Author #$num")
         _isRefreshing.value = false
+        _showingButton.value = true
+    }
+
+    fun addToFavourites(){
+        _showingButton.value = false
     }
 }
