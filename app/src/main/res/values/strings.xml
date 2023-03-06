@@ -14,4 +14,8 @@
     <string name="refreshTitle">Refresh</string>
     <string name="quoteInFavourites" />
     <string name="authorInFavourites" />
+    <string name="titleDeleteAll">Delete all favourite quotations</string>
+    <string name="msgDeleteAll">Do you really want to delete all quotations?</string>
+    <string name="botoDialogPositive">Delete</string>
+    <string name="botoDialogNegative">Cancel</string>
 </resources>
