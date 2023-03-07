@@ -19,10 +19,18 @@ class FavouritesViewModel: ViewModel() {
             val num = (0..99).random().toString()
             lista.add(Quotation(num, "Quotation text #$num", "Author #$num"))
         }
+        lista.add(Quotation("100", "\"Toda la ciencia no es más que un refinamiento del pensamiento cotidiano\"", "Albert Einstein"))
+        lista.add(Quotation("101", "Quotation text # 101", "Anonymous"))
         return lista
     }
     fun deleteAllQuotation(){
         _listaFav.value = emptyList()
+    }
+
+    fun deleteQuotationAsPosition(position: Int){
+        val lista = _listaFav.value?.toMutableList()
+        lista?.removeAt(position)
+        _listaFav.value = lista!!
     }
 
 }
