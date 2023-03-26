@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <EditTextPreference
         android:key="username"
         android:title="@string/title_username"
-        android:useSimpleSummaryProvider="true"
+        app:useSimpleSummaryProvider="true"
         android:hint="@string/hint_username"/>
     <ListPreference
         android:key="language"
         android:title="@string/title_language"
-        android:useSimpleSummaryProvider="true"
+        app:useSimpleSummaryProvider="true"
         android:defaultValue="en"
         android:entries="@array/language_options"
         android:entryValues="@array/language_codes"/>

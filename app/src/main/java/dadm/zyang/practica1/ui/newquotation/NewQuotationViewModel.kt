@@ -2,17 +2,19 @@ package dadm.zyang.practica1.ui.newquotation
 
 import androidx.lifecycle.*
 import dadm.zyang.practica1.data.newquotation.NewQuotationRepository
+import dadm.zyang.practica1.data.settings.SettingsRepository
 import dadm.zyang.practica1.domain.model.Quotation
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewQuotationViewModel @Inject constructor(private val newQuotationRepository: NewQuotationRepository): ViewModel(){
-
-    private val _userName = MutableLiveData<String>(getUserName())
+class NewQuotationViewModel @Inject constructor(
+    private val newQuotationRepository: NewQuotationRepository,
+    private val settingsRepository: SettingsRepository
+    ): ViewModel(){
     private fun getUserName()=setOf("Alice", "Bob","Charlie", "David", "Emma").random()
-    val userName : LiveData<String> = _userName
+    val userName : LiveData<String> = settingsRepository.getUsername().asLiveData()
 
     private val _cita = MutableLiveData<Quotation>()
     val cita : LiveData<Quotation> = _cita
