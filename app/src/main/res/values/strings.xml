@@ -19,4 +19,9 @@
     <string name="botoDialogNegative">Cancel</string>
     <string name="unexpected_error">Error inesperado</string>
     <string name="excepcion_capturandoCita">Excepcion capturando cita</string>
+    <string name="no_internet">Error: Sin internet</string>
+    <string name="newQuotation">NewQuotation</string>
+    <string name="title_username">User name</string>
+    <string name="hint_username">Enter your user name</string>
+    <string name="title_language">Language</string>
 </resources>

@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import dadm.zyang.practica1.R
 import dadm.zyang.practica1.data.newquotation.NewQuotationRepository
 import dadm.zyang.practica1.databinding.FragmentNewQuotationBinding
+import dadm.zyang.practica1.utils.NoInternetException
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeoutException
 
@@ -65,6 +66,7 @@ class NewQuotationFragment: Fragment(R.layout.fragment_new_quotation), MenuProvi
         viewModel.error.observe(viewLifecycleOwner) { error ->
             if (error != null) {
                 val errorMessage = when (error) {
+                    is NoInternetException -> R.string.no_internet
                     is Exception -> R.string.excepcion_capturandoCita
                     else -> R.string.unexpected_error
                 }

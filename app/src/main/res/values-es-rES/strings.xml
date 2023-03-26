@@ -2,19 +2,15 @@
 <resources>
     <string name="app_name">Practica1</string>
     <string name="about">"Acerca de "</string>
-    <string name="about">A</string>
     <string name="favourites">Favoritos</string>
     <string name="settings">Ajustes</string>
     <string name="newQuotationItem">Citas</string>
     <string name="favouritesItem">Favorito</string>
     <string name="settingsItem">Ajustes</string>
     <string name="aboutText">PracticaDadm de Zhuping Yang zyang@inf.uppv.es Desarrollado para DADM  2023</string>
-    <string name="aboutText">P</string>
     <string name="descripcionBirds">Descripción de la foto</string>
     <string name="descriptonFloatButton">Boton flotante</string>
     <string name="msgBienvenida">" “Hola %1s!,  Actualiza para obtenner una nueva cita  (arrastra hacia abajo o menu de opciones)"</string>
-    <string name="msgBienvenida">" “Hello %1s!,  Refresh to get a new quotation  (swipe down or options menu)"</string>
-    <string name="refreshTitle">Actualizar</string>
     <string name="titleDeleteAll">Eliminar todas las citas favoritas</string>
     <string name="msgDeleteAll">¿ Esta seguro de eliminar todas las citas favoritas?</string>
     <string name="botoDialogPositive">Eliminar</string>
