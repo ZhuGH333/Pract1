@@ -23,9 +23,9 @@ class FavouritesRepositoryImpl @Inject constructor(private val dataSource: Favou
             list.map { dto -> dto.toDomainModel() }
         }}
 
-    override fun getQuotationById(id: String): Flow<Quotation> {
+    override fun getQuotationById(id: String): Flow<Quotation?> {
         return dataSource.getQuotationById(id)
-            .map { dto -> dto.toDomainModel() }
+            .map { dto -> dto?.toDomainModel() }
     }
 
     override suspend fun clearAllQuotations() {

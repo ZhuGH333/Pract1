@@ -20,7 +20,7 @@ interface FavouritesDao {
     fun getAllQuotations(): Flow<List<QuotationDto>>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE $COLUMN_ID = :id")
-    fun getQuotationById(id: String): Flow<QuotationDto>
+    fun getQuotationById(id: String): Flow<QuotationDto?>
 
     @Query("DELETE FROM $TABLE_NAME")
     suspend fun clearAllQuotations()

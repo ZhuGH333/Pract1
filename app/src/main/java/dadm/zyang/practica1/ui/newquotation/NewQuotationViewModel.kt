@@ -1,6 +1,7 @@
 package dadm.zyang.practica1.ui.newquotation
 
 import androidx.lifecycle.*
+import dadm.zyang.practica1.data.favourites.FavouritesRepository
 import dadm.zyang.practica1.data.newquotation.NewQuotationRepository
 import dadm.zyang.practica1.data.settings.NewQuotationManager
 import dadm.zyang.practica1.data.settings.SettingsRepository
@@ -12,7 +13,8 @@ import javax.inject.Inject
 @HiltViewModel
 class NewQuotationViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
-    private val newQuotationManager: NewQuotationManager
+    private val newQuotationManager: NewQuotationManager,
+    private val favouritesRepository: FavouritesRepository
     ): ViewModel(){
     private fun getUserName()=setOf("Alice", "Bob","Charlie", "David", "Emma").random()
     val userName : LiveData<String> = settingsRepository.getUsername().asLiveData()
@@ -59,6 +61,10 @@ class NewQuotationViewModel @Inject constructor(
 
 
     fun addToFavourites(){
-        _showingButton.value = false
+        viewModelScope.launch {
+            favouritesRepository.addQuotation(cita.value!!)
+
+            _showingButton.value = false
+        }
     }
 }
