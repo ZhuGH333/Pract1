@@ -2,6 +2,7 @@ package dadm.zyang.practica1.ui.newquotation
 
 import androidx.lifecycle.*
 import dadm.zyang.practica1.data.newquotation.NewQuotationRepository
+import dadm.zyang.practica1.data.settings.NewQuotationManager
 import dadm.zyang.practica1.data.settings.SettingsRepository
 import dadm.zyang.practica1.domain.model.Quotation
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,8 +11,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewQuotationViewModel @Inject constructor(
-    private val newQuotationRepository: NewQuotationRepository,
-    private val settingsRepository: SettingsRepository
+    private val settingsRepository: SettingsRepository,
+    private val newQuotationManager: NewQuotationManager
     ): ViewModel(){
     private fun getUserName()=setOf("Alice", "Bob","Charlie", "David", "Emma").random()
     val userName : LiveData<String> = settingsRepository.getUsername().asLiveData()
@@ -42,7 +43,7 @@ class NewQuotationViewModel @Inject constructor(
         _isRefreshing.value = true
 
         viewModelScope.launch {
-            newQuotationRepository.getNewQuotation().fold(
+            newQuotationManager.getNewQuotation().fold(
                 onSuccess = { quotation ->
                     _cita.value = quotation
                     _isRefreshing.value = false

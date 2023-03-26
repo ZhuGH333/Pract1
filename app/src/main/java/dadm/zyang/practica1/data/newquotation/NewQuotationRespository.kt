@@ -4,6 +4,6 @@ import dadm.zyang.practica1.domain.model.Quotation
 
 interface NewQuotationRepository {
 
-    suspend fun getNewQuotation(): Result<Quotation>
+    suspend fun getNewQuotation(lang:String): Result<Quotation>
 
 }
