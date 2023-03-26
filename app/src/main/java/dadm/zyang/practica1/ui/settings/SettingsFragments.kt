@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import dadm.zyang.practica1.R
 import dadm.zyang.practica1.databinding.FragmentNewQuotationBinding
 import dadm.zyang.practica1.databinding.FragmentSettingsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SettingsFragments: Fragment(R.layout.fragment_settings) {
     private var _binding: FragmentSettingsBinding? = null;
     private val binding get() = _binding!!

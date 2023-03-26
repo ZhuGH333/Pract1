@@ -14,6 +14,7 @@ class DeleteAllDialogFragment( private val listener: DeleteAllDialogListener) : 
         fun onDeleteAllCancelled()
     }
 
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle(R.string.titleDeleteAll)

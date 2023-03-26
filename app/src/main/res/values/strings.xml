@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Practica1</string>
-    <string name="newQuotation">Get a new quotation</string>
+    <string name="app_name" translatable="false">Practica1</string>
     <string name="about">About</string>
     <string name="favourites">Favourites</string>
     <string name="settings">Settings</string>
@@ -8,14 +7,16 @@
     <string name="favouritesItem">Favourites</string>
     <string name="settingsItem">Settings</string>
     <string name="aboutText">PracticaDadm by \n\nZhuping Yang\n\nzyang@inf.upv.es\n\nDeveloped for DADM 2023</string>
-    <string name="descripcionBirds">Descripcion de la foto</string>
-    <string name="descriptonFloatButton">Boton flotante para añadir una cita</string>
-    <string name="msgBienvenida"> “Hello %1s!,\n\nRefresh to get a new quotation\n\n(swipe down or options menu)</string>
+    <string name="descripcionBirds">Picture description</string>
+    <string name="descriptonFloatButton">Floating button</string>
+    <string name="msgBienvenida">" “Hello %1s!,  Refresh to get a new quotation  (swipe down or options menu)"</string>
     <string name="refreshTitle">Refresh</string>
-    <string name="quoteInFavourites" />
-    <string name="authorInFavourites" />
+    <string name="quoteInFavourites" translatable="false" />
+    <string name="authorInFavourites" translatable="false" />
     <string name="titleDeleteAll">Delete all favourite quotations</string>
     <string name="msgDeleteAll">Do you really want to delete all quotations?</string>
     <string name="botoDialogPositive">Delete</string>
     <string name="botoDialogNegative">Cancel</string>
+    <string name="unexpected_error">Error inesperado</string>
+    <string name="excepcion_capturandoCita">Excepcion capturando cita</string>
 </resources>

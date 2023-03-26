@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import dadm.zyang.practica1.domain.model.Quotation
+import dagger.hilt.android.lifecycle.HiltViewModel
 
+@HiltViewModel
 class FavouritesViewModel: ViewModel() {
     private val _listaFav = MutableLiveData<List<Quotation>>(getFavouritesQuotation())
     val listaFavs: LiveData<List<Quotation>> = _listaFav

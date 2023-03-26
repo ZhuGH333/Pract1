@@ -1,5 +1,6 @@
 package dadm.zyang.practica1.ui.newquotation
 
+import android.accounts.NetworkErrorException
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -9,9 +10,14 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import com.google.android.material.snackbar.Snackbar
 import dadm.zyang.practica1.R
+import dadm.zyang.practica1.data.newquotation.NewQuotationRepository
 import dadm.zyang.practica1.databinding.FragmentNewQuotationBinding
+import dagger.hilt.android.AndroidEntryPoint
+import java.util.concurrent.TimeoutException
 
+@AndroidEntryPoint
 class NewQuotationFragment: Fragment(R.layout.fragment_new_quotation), MenuProvider {
     private var _binding: FragmentNewQuotationBinding? = null;
     private val binding get() = _binding!!
@@ -55,6 +61,17 @@ class NewQuotationFragment: Fragment(R.layout.fragment_new_quotation), MenuProvi
         }
 
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            if (error != null) {
+                val errorMessage = when (error) {
+                    is Exception -> R.string.excepcion_capturandoCita
+                    else -> R.string.unexpected_error
+                }
+                Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_LONG).show()
+                viewModel.resetError()
+            }
+        }
 
     }
 

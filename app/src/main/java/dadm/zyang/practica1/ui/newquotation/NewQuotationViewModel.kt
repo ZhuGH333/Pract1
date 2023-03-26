@@ -1,12 +1,15 @@
 package dadm.zyang.practica1.ui.newquotation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import dadm.zyang.practica1.data.newquotation.NewQuotationRepository
 import dadm.zyang.practica1.domain.model.Quotation
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class NewQuotationViewModel: ViewModel(){
+@HiltViewModel
+class NewQuotationViewModel @Inject constructor(private val newQuotationRepository: NewQuotationRepository): ViewModel(){
+
     private val _userName = MutableLiveData<String>(getUserName())
     private fun getUserName()=setOf("Alice", "Bob","Charlie", "David", "Emma").random()
     val userName : LiveData<String> = _userName
@@ -25,14 +28,32 @@ class NewQuotationViewModel: ViewModel(){
         _showingButton.value = false
     }
 
+    private val _error = MutableLiveData<Throwable?>()
+    val error: LiveData<Throwable?> = _error
 
-    fun getNewQuotation(){
-        _isRefreshing.value = true
-        val num = (0..99).random().toString()
-        _cita.value = Quotation(num, "Quotation text #$num", "Author #$num")
-        _isRefreshing.value = false
-        _showingButton.value = true
+    fun resetError() {
+        _error.value = null
     }
+
+    fun getNewQuotation() {
+        resetError()
+        _isRefreshing.value = true
+
+        viewModelScope.launch {
+            newQuotationRepository.getNewQuotation().fold(
+                onSuccess = { quotation ->
+                    _cita.value = quotation
+                    _isRefreshing.value = false
+                    _showingButton.value = true
+                },
+                onFailure = { error ->
+                    _error.value = error
+                    _isRefreshing.value = false
+                }
+            )
+        }
+    }
+
 
     fun addToFavourites(){
         _showingButton.value = false

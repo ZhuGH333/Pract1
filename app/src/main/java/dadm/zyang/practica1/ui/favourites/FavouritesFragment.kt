@@ -19,7 +19,9 @@ import com.google.android.material.snackbar.Snackbar
 import dadm.zyang.practica1.R
 import dadm.zyang.practica1.databinding.FragmentFavouritesBinding
 import dadm.zyang.practica1.databinding.FragmentNewQuotationBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavouritesFragment: Fragment(R.layout.fragment_favourites), DeleteAllDialogFragment.DeleteAllDialogListener, MenuProvider{
     private var _binding: FragmentFavouritesBinding? = null;
     private val binding get() = _binding!!
@@ -49,13 +51,6 @@ class FavouritesFragment: Fragment(R.layout.fragment_favourites), DeleteAllDialo
         }
     })
 
-    //crear un objeto que implemente esta interfaz
-    //y pásalo como parámetro al adaptador. En la implementación se deberá comprobar si
-    //el autor de la cita es “Anonymous” y, en ese caso, muestra un Snackbar que indique
-    //que no es posible mostrar información si el autor es anónimo. Si no, entonces genera
-    //un Intent implícito con acción ACTION_VIEW. El dato que se desea visualizar es
-    //“https://en.wikipedia.org/wiki/Special:Search?search=” + authorName, donde
-    //authorName será el nombre del autor de la cita.
     private val itemClicked = object: QuotationListAdapter.ItemClicked{
         override fun onClick(author: String) {
             if(author == "Anonymous"){
