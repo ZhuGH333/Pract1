@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import dadm.zyang.practica1.data.favourites.FavouritesRepository
 import dadm.zyang.practica1.domain.model.Quotation
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,12 +29,12 @@ class FavouritesViewModel @Inject constructor(private val favouritesRepository: 
     /*
     fun deleteAllQuotation(){
         _listaFav.value = emptyList()
-    }
+    }*/
 
     fun deleteQuotationAsPosition(position: Int){
-        val lista = _listaFav.value?.toMutableList()
-        lista?.removeAt(position)
-        _listaFav.value = lista!!
+        viewModelScope.launch {
+            listaFavs.value?.get(position)?.let { favouritesRepository.removeQuotation(it) }
+        }
     }
-*/
+
 }

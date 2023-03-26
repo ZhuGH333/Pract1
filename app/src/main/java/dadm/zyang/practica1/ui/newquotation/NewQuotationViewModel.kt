@@ -27,11 +27,14 @@ class NewQuotationViewModel @Inject constructor(
 
     val isGreetingsVisible = Transformations.map(cita) { it == null }
 
-    private val _showingButton = MutableLiveData<Boolean>()
-    val showingButton : LiveData<Boolean> = _showingButton
-    init {
-        _showingButton.value = false
+
+
+    val showingButton : LiveData<Boolean> = cita.switchMap() { newQuotation ->
+        favouritesRepository.getQuotationById(newQuotation.id).asLiveData()
+    }.map() { favourite ->
+        favourite == null
     }
+
 
     private val _error = MutableLiveData<Throwable?>()
     val error: LiveData<Throwable?> = _error
@@ -49,7 +52,6 @@ class NewQuotationViewModel @Inject constructor(
                 onSuccess = { quotation ->
                     _cita.value = quotation
                     _isRefreshing.value = false
-                    _showingButton.value = true
                 },
                 onFailure = { error ->
                     _error.value = error
@@ -64,7 +66,6 @@ class NewQuotationViewModel @Inject constructor(
         viewModelScope.launch {
             favouritesRepository.addQuotation(cita.value!!)
 
-            _showingButton.value = false
         }
     }
 }
