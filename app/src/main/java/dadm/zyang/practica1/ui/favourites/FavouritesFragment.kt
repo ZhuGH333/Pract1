@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -22,11 +23,11 @@ import dadm.zyang.practica1.databinding.FragmentNewQuotationBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FavouritesFragment: Fragment(R.layout.fragment_favourites), DeleteAllDialogFragment.DeleteAllDialogListener, MenuProvider{
+class FavouritesFragment: Fragment(R.layout.fragment_favourites),  MenuProvider{
     private var _binding: FragmentFavouritesBinding? = null;
     private val binding get() = _binding!!
 
-    private val viewModel: FavouritesViewModel by viewModels()
+    private val viewModel: FavouritesViewModel by activityViewModels()
 
     private val itemTouchHelper = ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.END){
         override fun onMove(
@@ -92,13 +93,6 @@ class FavouritesFragment: Fragment(R.layout.fragment_favourites), DeleteAllDialo
         _binding=null
     }
 
-    override fun onDeleteAllConfirmed() {
-        viewModel.deleteAllQuotation()
-    }
-
-    override fun onDeleteAllCancelled() {
-        // Do nothing
-    }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
 
@@ -108,7 +102,7 @@ class FavouritesFragment: Fragment(R.layout.fragment_favourites), DeleteAllDialo
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return when (menuItem.itemId) {
             R.id.menu_item_delete -> {
-                DeleteAllDialogFragment(this).show(childFragmentManager, null)
+                DeleteAllDialogFragment().show(childFragmentManager, null)
                 true
             }
             else -> false
