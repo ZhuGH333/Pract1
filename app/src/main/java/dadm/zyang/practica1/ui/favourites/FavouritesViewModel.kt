@@ -4,6 +4,8 @@ import androidx.lifecycle.*
 import dadm.zyang.practica1.data.favourites.FavouritesRepository
 import dadm.zyang.practica1.domain.model.Quotation
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -14,27 +16,15 @@ class FavouritesViewModel @Inject constructor(private val favouritesRepository: 
 
     val isDeleteAllVisible = Transformations.map(listaFavs) { it.isNotEmpty() }
 
-/*
-    private fun getFavouritesQuotation(): List<Quotation> {
-        val lista = mutableListOf<Quotation>()
-        for (i in 0..19) {
-            val num = (0..99).random().toString()
-            lista.add(Quotation(num, "Quotation text #$num", "Author #$num"))
-        }
-        lista.add(Quotation("100", "\"Toda la ciencia no es más que un refinamiento del pensamiento cotidiano\"", "Albert Einstein"))
-        lista.add(Quotation("101", "Quotation text # 101", "Anonymous"))
-        return lista
-    }*/
-
-    /*
     fun deleteAllQuotation(){
-        _listaFav.value = emptyList()
-    }*/
-
-    fun deleteQuotationAsPosition(position: Int){
         viewModelScope.launch {
-            listaFavs.value?.get(position)?.let { favouritesRepository.removeQuotation(it) }
+            favouritesRepository.clearAllQuotations()
         }
     }
 
+    fun deleteQuotationAsPosition(position: Int){
+        viewModelScope.launch {
+            favouritesRepository.removeQuotation(listaFavs.value?.get(position)!!)
+        }
+    }
 }

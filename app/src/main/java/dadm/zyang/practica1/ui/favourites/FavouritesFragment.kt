@@ -46,7 +46,7 @@ class FavouritesFragment: Fragment(R.layout.fragment_favourites), DeleteAllDialo
         }
 
         override fun onSwiped(viewHolder: androidx.recyclerview.widget.RecyclerView.ViewHolder, direction: Int) {
-            //viewModel.deleteQuotationAsPosition(viewHolder.adapterPosition)
+            viewModel.deleteQuotationAsPosition(viewHolder.adapterPosition)
         }
     })
 
@@ -93,7 +93,7 @@ class FavouritesFragment: Fragment(R.layout.fragment_favourites), DeleteAllDialo
     }
 
     override fun onDeleteAllConfirmed() {
-        //viewModel.deleteAllQuotation()
+        viewModel.deleteAllQuotation()
     }
 
     override fun onDeleteAllCancelled() {
